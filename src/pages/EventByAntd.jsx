@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import Button from "react-bootstrap/Button";
-import styles from "./EventByBootstrap.module.css";
+import styles from "./EventByAntd.module.css";
+import { Flex, Button, Card } from "antd";
 
 //import images
 import arrow_left from "../assets/icons/arrow_left.svg";
 import share from "../assets/icons/share.svg";
 
 //import components
-import ProductList from "../components/ProductList";
+import AntdProductList from "../components/AntdProductList";
 import EventMainSection from "../components/EventMainSection";
 
-const EventByBootstrap = () => {
+const EventByAntd = () => {
   const [currentFilter, setCurrentFilter] = useState("남성의류");
   const handleCurrnetFilter = (newFilter) => {
     setCurrentFilter(newFilter);
@@ -20,7 +20,11 @@ const EventByBootstrap = () => {
     <article className="layout">
       <div>
         <div className={styles.page__style}>
-          <section className={styles.header}>
+          <Flex
+            justify="space-between"
+            align="center"
+            className={styles.header}
+          >
             <button className={styles.header__btn}>
               <img src={arrow_left} alt="왼쪽 화살표" />
             </button>
@@ -28,7 +32,7 @@ const EventByBootstrap = () => {
             <button className={styles.header__btn}>
               <img src={share} alt="공유하기" />
             </button>
-          </section>
+          </Flex>
           <EventMainSection />
           <section>
             <ul className={styles.filter__list}>
@@ -56,8 +60,10 @@ const EventByBootstrap = () => {
             </ul>
             <div className={styles.top__sales}>
               <h2>실시간 인기 TOP5</h2>
-              <ProductList />
-              <Button className={styles.show__all__btn}>전체 상품 보기</Button>
+              <AntdProductList />
+              <Button type="primary" block className={styles.show__all__btn}>
+                전체 상품 보기
+              </Button>
             </div>
           </section>
           <section className={styles.coupon__section}>
@@ -74,4 +80,4 @@ const EventByBootstrap = () => {
   );
 };
 
-export default EventByBootstrap;
+export default EventByAntd;
